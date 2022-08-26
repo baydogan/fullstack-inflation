@@ -1,10 +1,15 @@
 import express from "express";
 import dotenv from "dotenv";
-import colors from 'colors'
+import connectToMongo from "./config/db.js";
+import colors from "colors";
 
-const app = express();
 dotenv.config();
 
-const PORT = process.env.PORT || 5001
+connectToMongo();
+
+const app = express();
+
+const PORT = process.env.PORT || 5001;
+
 
 app.listen(PORT, () => console.log(`App is running on ${PORT}`.green));
