@@ -45,7 +45,7 @@ const userSchema = mongoose.Schema({
     },
   },
   registered: {
-    date: { type: String, required: true },
+    date: { type: Date, default: new Date(), required: true },
     age: { type: Number, required: true },
   },
   phone: {
@@ -61,10 +61,6 @@ const userSchema = mongoose.Schema({
 });
 
 userSchema.pre("save", async function (next) {
-  if (!this.isModified("password")) {
-    next();
-  }
-
   const salt = await bcrypt.genSalt(10);
   this.login.password = await bcrypt.hash(this.login.password, salt);
 });
