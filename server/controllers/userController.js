@@ -13,7 +13,8 @@ const authUser = async (req, res) => {
     if (user && (await user.matchPassword(password))) {
       res.json({
         _id: user._id,
-        name: user.login.username,
+        user_name: user.login.username,
+        name: `${user.name.first} ${user.name.last}`,
         email: user.email,
         isAdmin: user.isAdmin,
         token: generateToken(user._id),
@@ -26,13 +27,6 @@ const authUser = async (req, res) => {
     res.status(400).json({ error: error.message });
   }
 
-  // if(user && (await user.matchPassword(password))){
-  //   res.json({
-  //     _id: user._id,
-  //     name: user.name,
-  //     email
-  //   })
-  // }
 };
 
 // @desc    Fetch all users
