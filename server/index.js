@@ -10,6 +10,7 @@ dotenv.config();
 connectToMongo();
 
 const app = express();
+app.use(express.json());
 
 const PORT = process.env.PORT || 5001;
 

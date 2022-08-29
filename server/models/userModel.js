@@ -60,6 +60,10 @@ const userSchema = mongoose.Schema({
   isAdmin: false,
 });
 
+userSchema.methods.matchPassword = async function (password) {
+  return await bcrypt.compare(password, this.login.password);
+};
+
 userSchema.pre("save", async function (next) {
   const salt = await bcrypt.genSalt(10);
   this.login.password = await bcrypt.hash(this.login.password, salt);
