@@ -12,24 +12,24 @@ const userSchema = mongoose.Schema({
   },
   location: {
     street: {
-      number: { type: Number, required: true },
-      name: { type: String, required: true },
+      number: { type: Number, required: false },
+      name: { type: String, required: false },
     },
     city: {
       type: String,
-      required: true,
+      required: false,
     },
     state: {
       type: String,
-      required: true,
+      required: false,
     },
     country: {
       type: String,
-      required: true,
+      required: false,
     },
     postcode: {
       type: Number,
-      required: true,
+      required: false,
     },
   },
   email: { type: String, required: true, unique: true },
@@ -45,15 +45,15 @@ const userSchema = mongoose.Schema({
     },
   },
   registered: {
-    date: { type: Date, default: new Date(), required: true },
-    age: { type: Number, required: true },
+    date: { type: Date, default: new Date(), required: false },
+    age: { type: Number, required: false },
   },
   phone: {
     type: String,
-    required: true,
+    required: false,
   },
   picture: {
-    large: { type: String, required: true },
+    large: { type: String, required: false },
     medium: { type: String, required: false },
     thumbnail: { type: String, required: false },
   },

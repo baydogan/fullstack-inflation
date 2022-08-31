@@ -1,6 +1,52 @@
 import User from "../models/userModel.js";
 import generateToken from "../utils/generateToken.js";
 
+// @desc    Register user
+// @route   POST /api/users/
+// @access  Public
+
+const registerUser = async (req, res, next) => {
+  const { email, username, password, first, last } = req.body;
+
+  const emailExist = await User.findOne({ email });
+  const userNameExist = await User.findOne({ "login.username": username });
+
+  if (emailExist) {
+    res.status(400).send({ message: "Email already exists" });
+  } else if (userNameExist) {
+    res.status(400).send({ message: "Username already exists" });
+  } else {
+    try {
+      const user = await User.create({
+        email,
+        login: {
+          username,
+          password,
+        },
+        name: {
+          first,
+          last,
+        },
+      });
+
+      if (user) {
+        res.status(201).json({
+          _id: user._id,
+          name: user.name,
+          email: user.email,
+          isAdmin: user.isAdmin,
+          token: generateToken(user._id),
+        });
+      } else {
+        res.status(400);
+        throw new Error("Invalid user data");
+      }
+    } catch (error) {
+      res.status(401).send({ message: error.message });
+    }
+  }
+};
+
 // @desc    Auth user
 // @route   POST /api/users/login
 // @access  Public
@@ -55,4 +101,4 @@ const getUsers = async (req, res) => {
   } catch (error) {}
 };
 
-export { getUsers, authUser, getUserProfile };
+export { getUsers, authUser, getUserProfile, registerUser };
