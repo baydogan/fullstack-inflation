@@ -1,4 +1,4 @@
-const mongoose = require("mongoose")
+const mongoose = require("mongoose");
 
 const productSchema = mongoose.Schema(
   {
@@ -50,8 +50,8 @@ const productSchema = mongoose.Schema(
   },
   {
     timestamps: true,
+    versionKey: false,
   }
 );
 
 module.exports = mongoose.model("Product", productSchema);
-

@@ -4,7 +4,10 @@ const URI = "mongodb+srv://admin:DT5GikCyM2NnBD2l@cluster0.diwhw3w.mongodb.net/f
 
 const connectToMongo = async () => {
   try {
-    const conn = await mongoose.connect(URI);
+    const conn = await mongoose.connect(URI, {
+      useUnifiedTopology: true,
+      useNewUrlParser: true,
+    });
     console.log(` 'Connected to MongoDB' ${conn.connection.host}`.cyan);
   } catch (error) {
     console.log(`${error}`.red);
@@ -12,5 +15,5 @@ const connectToMongo = async () => {
 };
 
 module.exports = () => {
-  connectToMongo()
+  connectToMongo();
 };
