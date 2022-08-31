@@ -1,7 +1,7 @@
 import fs from "fs";
 import colors from "colors";
-import { users } from "../mockData/users.js";
-import { clearProp, addProp } from "./index.js";
+import { users } from "../data/users.js";
+import { clearProp, addProp } from "./helper.js";
 
 
 const newUsers = users.map(({ nat, id, dob, timezone, cell, ...rest }) => {

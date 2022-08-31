@@ -3,8 +3,8 @@ import dotenv from "dotenv";
 import connectToMongo from "./config/db.js";
 import colors from "colors";
 import createError from "http-errors";
-import userRoutes from "./routes/userRoutes.js";
-import productRoutes from "./routes/productRoutes.js";
+import userRoutes from "./routes/User.js";
+import productRoutes from "./routes/Product.js";
 
 dotenv.config();
 

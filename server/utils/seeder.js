@@ -1,10 +1,10 @@
 import connectToMongo from "../config/db.js";
 import dotenv from "dotenv";
 import colors from "colors";
-import { users } from "../mockData/users.js";
-import { products } from "../mockData/products.js";
-import User from "../models/userModel.js";
-import Product from "../models/productModel.js";
+import { users } from "../data/users.js";
+import { products } from "../data/products.js";
+import User from "../models/User.js";
+import Product from "../models/Product.js";
 
 dotenv.config();
 
