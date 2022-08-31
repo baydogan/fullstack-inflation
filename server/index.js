@@ -1,18 +1,15 @@
-import express from "express";
-import dotenv from "dotenv";
-import connectToMongo from "./config/db.js";
-import colors from "colors";
-import createError from "http-errors";
-import userRoutes from "./routes/User.js";
-import productRoutes from "./routes/Product.js";
+const express = require("express");
 
-dotenv.config();
+const userRoutes = require("./routes/User")
+const config = require("./config")
+const productRoutes = require("./routes/Product")
 
-connectToMongo();
+
+config()
 
 const app = express();
-app.use(express.json());
 
+app.use(express.json());
 
 const PORT = process.env.PORT || 5001;
 

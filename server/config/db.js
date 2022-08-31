@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+const mongoose = require("mongoose");
 
 const URI = "mongodb+srv://admin:DT5GikCyM2NnBD2l@cluster0.diwhw3w.mongodb.net/fullstack-inflation";
 
@@ -11,4 +11,6 @@ const connectToMongo = async () => {
   }
 };
 
-export default connectToMongo;
+module.exports = () => {
+  connectToMongo()
+};

@@ -1,6 +1,6 @@
-import createError from "http-errors";
-import jwt from "jsonwebtoken";
-import User from "../models/User.js";
+const createError = require("http-errors");
+const jwt = require("jsonwebtoken");
+const User = require("../models/User");
 
 const protectUser = async (req, res, next) => {
   if (!req.headers["authorization"]) return next(createError.Unauthorized());
@@ -19,4 +19,4 @@ const protectUser = async (req, res, next) => {
   }
 };
 
-export { protectUser };
+module.exports = protectUser;

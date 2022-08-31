@@ -1,4 +1,4 @@
-import Product from "../models/Product.js";
+const Product = require("../models/Product");
 
 // @desc    Fetch all products
 // @route   GET /api/products
@@ -31,4 +31,7 @@ const getProductById = async (req, res) => {
   }
 };
 
-export { getAllProducts, getProductById };
+module.exports = {
+  getAllProducts,
+  getProductById,
+};
