@@ -26,7 +26,22 @@ const authUser = async (req, res) => {
   } catch (error) {
     res.status(400).json({ error: error.message });
   }
+};
 
+// @desc    Get user profile
+// @route   GET /api/users/profile
+// @access  Private
+
+const getUserProfile = async (req, res) => {
+  try {
+    const userProfile = await User.findById(req.user._id);
+
+    if (userProfile) {
+      res.json({ userProfile });
+    }
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
 };
 
 // @desc    Fetch all users
@@ -40,4 +55,4 @@ const getUsers = async (req, res) => {
   } catch (error) {}
 };
 
-export { getUsers, authUser };
+export { getUsers, authUser, getUserProfile };
